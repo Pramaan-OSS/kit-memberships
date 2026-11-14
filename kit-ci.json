@@ -1,0 +1,124 @@
+{
+  "kit": "memberships",
+  "version": "0.1.0",
+  "digest": "sha256:6f5085a7ab9bd2cc50da423b5c3d544924de315ad28cc9d6f2a5c5f7541a7e62",
+  "contract": "1",
+  "green": false,
+  "ranAt": "2026-11-14T03:34:26.943Z",
+  "run": null,
+  "gates": [
+    {
+      "id": "contract",
+      "ok": true,
+      "evidence": "78 files, 7 migrations, 8 journeys"
+    },
+    {
+      "id": "licence",
+      "ok": true,
+      "evidence": "MIT; derived, written by person"
+    },
+    {
+      "id": "secrets",
+      "ok": true,
+      "evidence": "Scanned 79 source files for credential-shaped material."
+    },
+    {
+      "id": "packages",
+      "ok": true,
+      "evidence": "3 packages beyond the starter's, every one under an allowed licence"
+    },
+    {
+      "id": "install",
+      "ok": false,
+      "evidence": "Full platform run stopped: execution image is unavailable (pramaan-execution-cell:v1)."
+    },
+    {
+      "id": "check",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "client-secrets",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "tests",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "migrations",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "draft",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "owner-pass",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "authorization",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "browser",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "tree",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "journey:public-plans",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "journey:member-signup",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "journey:owner-settings",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "journey:front-desk",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    },
+    {
+      "id": "journey:edit-lists",
+      "ok": false,
+      "evidence": "Full platform cell gate not run: execution image unavailable. Local evidence is recorded separately in BLOCKED.md and .scratch/KIT-DONE.md."
+    }
+  ],
+  "measured": {
+    "on": "2026-11-14",
+    "by": "person",
+    "draft": {
+      "peakMiB": 1016,
+      "limitMiB": 2560,
+      "firstAnswerSeconds": 5
+    },
+    "verifier": {
+      "peakMiB": 1077,
+      "limitMiB": 2048,
+      "seconds": 9
+    },
+    "browser": {
+      "peakMiB": 169,
+      "limitMiB": 1024
+    }
+  }
+}

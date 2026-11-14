@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "join-and-pay",
+      "label": "Open recurring membership signup; the complete authorize/payment/read-back flow is verified by scripts/walk.mjs with the fake door.",
+      "steps": [
+        {
+          "goto": "/signin"
+        },
+        {
+          "expectHeading": "Come on in."
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

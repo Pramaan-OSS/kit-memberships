@@ -1,0 +1,9 @@
+{
+  "routes": ["/signin"],
+  "nav": [
+    {
+      "href": "/signin",
+      "label": "Signin"
+    }
+  ]
+}

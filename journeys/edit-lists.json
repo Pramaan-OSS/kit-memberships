@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "edit-lists",
+      "label": "Open membership statuses and plan categories.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/settings"
+        },
+        {
+          "expectHeading": "Manage the club"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

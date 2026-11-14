@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "blocks": [
+    {
+      "id": "theme",
+      "version": "0.1.0",
+      "source": "Pramaan-OSS/blocks",
+      "sourceCommit": "4577cabca086a430563c196b6cd86cc919f873c0",
+      "sourcePath": "registry/theme",
+      "licence": "MIT",
+      "sourceHashes": {
+        "registry/theme/lib/pramaan/fonts.ts": "de90da679c962d19170f0dcd78f69558b435dd8a8aeba8b3bc176ecc754ff410"
+      }
+    },
+    {
+      "id": "subscriptions",
+      "version": "0.1.0",
+      "source": "Pramaan-OSS/blocks",
+      "sourceCommit": "4577cabca086a430563c196b6cd86cc919f873c0",
+      "sourcePath": "registry/subscriptions",
+      "licence": "MIT",
+      "sourceHashes": {
+        "registry/subscriptions/README.md": "010753784893a01e050f998e07ae6d653486d18c601daea30b256fb1afe5444b",
+        "registry/subscriptions/lib/pramaan/subscriptions-customer.ts": "96ef66b75a5426c9c81a6fd5dbf32d1ba31403df120b0b5b6bec2b9c6f0ab327",
+        "registry/subscriptions/lib/pramaan/subscriptions.ts": "01d39834040f83669478193cc7ab06a6ea86c6959f08daba54618fcf09b2a31c",
+        "registry/subscriptions/components/pramaan/subscriptions/plan-card.tsx": "cee82af01dbae33733ef18c77787e9e1955bda13ee9ff9db041fd96653da233e",
+        "registry/subscriptions/app/api/pramaan/subscriptions/route.ts": "0cb63fb4710f8cefb1757bfca4884d6ddffce4b5fabf9e9d6bd1de0e6a05f0e5",
+        "registry/subscriptions/app/api/pramaan/subscriptions/portal/route.ts": "a70b499e929f92904512e22392c0899e6a768433f45a97c3661c5b0e3735fe76"
+      }
+    },
+    {
+      "id": "checkout",
+      "version": "0.1.0",
+      "source": "Pramaan-OSS/blocks",
+      "sourceCommit": "4577cabca086a430563c196b6cd86cc919f873c0",
+      "sourcePath": "registry/checkout",
+      "licence": "MIT",
+      "sourceHashes": {
+        "registry/checkout/README.md": "22aeef6aef4e2b6e3fa6adb3c13b4d7a75d3fce21da34ac6c6eaa40f6ee9db47",
+        "registry/checkout/lib/pramaan/checkout.ts": "f73f71b5b2b2e390b93ddadd740fff32d0b3f3108ead2937b7fc6c917ab80b83",
+        "registry/checkout/lib/pramaan/checkout-plans.ts": "753cfa455a1e6eecaa582abea3ab08f9b500e0221584a7099ae53c98b16a7b63",
+        "registry/checkout/components/pramaan/checkout/checkout-button.tsx": "11b5271ed8ae4627899b89ff251cf04690265ee9dde5625b7800e02dde21bb3c",
+        "registry/checkout/app/api/pramaan/checkout/route.ts": "a1510dcba9b020d249a4a8da6c8eec80bb2f7c6e43b6305609b22d5d548eec9b",
+        "registry/checkout/app/checkout/done/page.tsx": "616bc21186c976d71cd941aa330f394340d0ab23a2681d5a935fdbb84449b12b"
+      }
+    }
+  ],
+  "adaptations": {
+    "theme": "Bundled fonts and starter theme, adapted to a quiet green studio palette.",
+    "subscriptions": "Customer derived from signed-in member on server; no account references rendered. Rewritten through the platform HTTP module door rather than the registry SDK. Read-back controls access.",
+    "checkout": "Server reads the pass price; hosted checkout uses a durable idempotency key. Access requires captured payments matching amount and currency. Rewritten through the platform HTTP module door."
+  }
+}

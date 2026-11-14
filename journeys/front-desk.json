@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "front-desk",
+      "label": "Open the front desk and find members.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/desk"
+        },
+        {
+          "expectHeading": "Front desk"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

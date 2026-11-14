@@ -1,0 +1,9 @@
+{
+  "routes": ["/membership"],
+  "nav": [
+    {
+      "href": "/membership",
+      "label": "Membership"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "member-signup",
+      "label": "Create a member account.",
+      "steps": [
+        {
+          "goto": "/signin"
+        },
+        {
+          "expectHeading": "Come on in."
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

@@ -1,0 +1,172 @@
+{
+  "id": "memberships",
+  "version": "0.1.0",
+  "title": "Memberships",
+  "summary": "Sell memberships and day passes, confirm billing, and check members into a gym, studio, club or community.",
+  "category": "business-operations",
+  "stack": {
+    "contract": "1",
+    "template": "data",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "node": "24.18.0",
+    "packageManager": "pnpm@11.15.1"
+  },
+  "licence": "MIT",
+  "provenance": {
+    "mode": "derived",
+    "starter": "Pramaan-Dev/product-loop@370419379645405019af029fa08a75680ad75c8b",
+    "derivedFrom": ["Pramaan-Dev/product-loop@370419379645405019af029fa08a75680ad75c8b"],
+    "upstreamNotices": ["NOTICE.md"],
+    "writtenBy": "person"
+  },
+  "measured": {
+    "on": "2026-11-14",
+    "by": "person",
+    "draft": {
+      "peakMiB": 1016,
+      "limitMiB": 2560,
+      "firstAnswerSeconds": 5
+    },
+    "verifier": {
+      "peakMiB": 1077,
+      "limitMiB": 2048,
+      "seconds": 9
+    },
+    "browser": {
+      "peakMiB": 169,
+      "limitMiB": 1024
+    }
+  },
+  "entryPoints": [
+    {
+      "route": "/",
+      "file": "app/page.tsx",
+      "audience": "visitor",
+      "summary": "Browse public plans."
+    },
+    {
+      "route": "/signin",
+      "file": "app/signin/page.tsx",
+      "audience": "visitor",
+      "summary": "Sign in or create a member account."
+    },
+    {
+      "route": "/membership",
+      "file": "app/membership/page.tsx",
+      "audience": "member",
+      "summary": "See only your membership, payments and visits."
+    },
+    {
+      "route": "/desk",
+      "file": "app/desk/page.tsx",
+      "audience": "staff",
+      "summary": "Find members and check active members in."
+    },
+    {
+      "route": "/settings",
+      "file": "app/settings/page.tsx",
+      "audience": "owner",
+      "summary": "Add staff, plans, lists and import or export records."
+    },
+    {
+      "route": "/owner",
+      "file": "app/owner/page.tsx",
+      "audience": "owner",
+      "summary": "Set the owner sign-in details."
+    }
+  ],
+  "roles": {
+    "owner": {
+      "source": "owner-pass",
+      "summary": "Manages plans, staff and all club records."
+    },
+    "staff": {
+      "source": "added-by-owner",
+      "summary": "Signs in for member lookup and check-in only."
+    },
+    "member": {
+      "source": "public-sign-up",
+      "summary": "Signs up to join; sees only their own membership, payments and visits."
+    },
+    "visitor": {
+      "source": "anonymous",
+      "summary": "Browses plans and signs in."
+    }
+  },
+  "journeys": [
+    {
+      "id": "public-plans",
+      "role": "visitor",
+      "summary": "Browse plans without signing in.",
+      "status": "ships-working",
+      "checklist": "journeys/public-plans.json"
+    },
+    {
+      "id": "member-signup",
+      "role": "visitor",
+      "summary": "Create a member account.",
+      "status": "ships-working",
+      "checklist": "journeys/member-signup.json"
+    },
+    {
+      "id": "owner-settings",
+      "role": "owner",
+      "summary": "Open the owner area through an owner pass.",
+      "status": "ships-working",
+      "checklist": "journeys/owner-settings.json"
+    },
+    {
+      "id": "front-desk",
+      "role": "owner",
+      "summary": "Open the front desk and find members.",
+      "status": "ships-working",
+      "checklist": "journeys/front-desk.json"
+    },
+    {
+      "id": "edit-lists",
+      "role": "owner",
+      "summary": "Open membership statuses and plan categories.",
+      "status": "ships-working",
+      "checklist": "journeys/edit-lists.json"
+    },
+    {
+      "id": "join-and-pay",
+      "role": "member",
+      "summary": "Join, follow the first-payment authorization link, and activate only after billing read-back; verified with the fake door.",
+      "status": "ships-working",
+      "checklist": "journeys/join-and-pay.json"
+    },
+    {
+      "id": "manage-subscription",
+      "role": "member",
+      "summary": "Pause or cancel at period end through billing.",
+      "status": "needs-capability",
+      "capability": "external_http"
+    },
+    {
+      "id": "membership-notices",
+      "role": "owner",
+      "summary": "Deliver welcome, failed-renewal and cancellation emails.",
+      "status": "needs-capability",
+      "capability": "email"
+    }
+  ],
+  "capabilities": [
+    "accounts",
+    "server_data",
+    "roles",
+    "external_http",
+    "email",
+    "file_input",
+    "download"
+  ],
+  "notIncluded": [
+    "Billing is off by default. Requires the platform door, a connected test account and PRAMAAN_PAYMENTS_TEST_MODE=true. The platform operator selects test credentials.",
+    "Billing changes attempt email delivery; the owner retries unsent messages. No background delivery or webhook processing. Billing refresh is explicit.",
+    "One membership per member. Changing plans or rejoining after cancellation is not included.",
+    "CSV imports up to 200 members per request; exports and visit history are limited to their documented result windows.",
+    "Real-account authorization and billing response compatibility are a deployment check; this kit uses the fake door and makes no live paid calls."
+  ],
+  "protectedPaths": ["lib/accounts.ts", "lib/memberships.ts", "lib/roles/http.ts"]
+}

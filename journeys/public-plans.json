@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "public-plans",
+      "label": "Browse plans without signing in.",
+      "steps": [
+        {
+          "goto": "/"
+        },
+        {
+          "expectHeading": "Find your rhythm."
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

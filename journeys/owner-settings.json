@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "owner-settings",
+      "label": "Open the owner area through an owner pass.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/owner"
+        },
+        {
+          "expectHeading": "Owner area"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

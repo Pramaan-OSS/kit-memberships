@@ -1,0 +1,9 @@
+{
+  "routes": ["/desk"],
+  "nav": [
+    {
+      "href": "/desk",
+      "label": "Desk"
+    }
+  ]
+}
