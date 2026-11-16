@@ -5,7 +5,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 // The kit carries the starter's package.json, which has no browser tools: point WALK_BROWSER_MODULE at an installed
-// @playwright/test (its index.js) to run this walk.
+// @playwright/test (its index.mjs) to run this walk.
 const browserModule = process.env.WALK_BROWSER_MODULE;
 const { chromium, expect } = await import(
   browserModule ? pathToFileURL(browserModule).href : "@playwright/test"
@@ -126,10 +126,36 @@ try {
     const list = JSON.parse(
       await (await import("node:fs/promises")).readFile(journey.checklist, "utf8"),
     );
-    const page = journey.role === "owner" ? o : v;
+    // As the gate does: enterAs opens a fresh browser at home (signed out; the owner's signs in with a pass), and an
+    // enterAs with "as" returns to that named person's browser. A first goto is a fresh signed-out browser.
+    const contexts = [await browser.newContext()],
+      named = new Map();
+    let page = await contexts[0].newPage();
     for (const item of list.items)
       for (const step of item.steps) {
+        if (step.enterAs) {
+          const key = `${step.enterAs}\u0000${step.as ?? ""}`;
+          if (step.as && named.has(key)) page = named.get(key);
+          else {
+            contexts.push(await browser.newContext());
+            page = await contexts.at(-1).newPage();
+            await page.goto(
+              step.enterAs === "owner"
+                ? `${origin}/api/account/owner-pass?token=${encodeURIComponent(pass())}`
+                : `${origin}/`,
+            );
+            if (step.as) named.set(key, page);
+          }
+        }
         if (step.goto) await page.goto(origin + step.goto);
+        if (step.fill) await page.getByLabel(step.fill, { exact: true }).fill(step.value);
+        if (step.click)
+          await page
+            .getByRole("button", { name: step.click, exact: true })
+            .or(page.getByRole("link", { name: step.click, exact: true }))
+            .click();
+        if (step.expectText)
+          await verify(() => expect(page.getByText(step.expectText).first()).toBeVisible());
         if (step.expectHeading)
           await verify(() =>
             expect(
@@ -137,6 +163,7 @@ try {
             ).toBeVisible(),
           );
       }
+    for (const context of contexts) await context.close();
     console.log(`journey:${journey.id}: passed`);
   }
   await o.goto(origin + "/settings");
@@ -158,8 +185,8 @@ try {
     .filter({ has: m.getByRole("heading", { name: "Become a member" }) });
   await signup.getByLabel("Phone number").fill("9000000000");
   await signup.getByLabel("Your name").fill("member-walk");
-  await signup.getByLabel("Email", { exact: true }).fill("member-walk@example.test");
-  await signup.getByLabel("Password", { exact: true }).fill("member-walk-strong-password");
+  await signup.getByLabel("Your email", { exact: true }).fill("member-walk@example.test");
+  await signup.getByLabel("Choose a password", { exact: true }).fill("member-walk-strong-password");
   await signup.getByRole("button", { name: "Create account" }).click();
   await m.waitForURL("**/membership");
   await verify(() => expect(m.getByRole("heading", { name: "My membership" })).toBeVisible());
@@ -197,8 +224,8 @@ try {
     .filter({ has: b.getByRole("heading", { name: "Become a member" }) });
   await signupB.getByLabel("Phone number").fill("9000000001");
   await signupB.getByLabel("Your name").fill("other-walk");
-  await signupB.getByLabel("Email", { exact: true }).fill("other-walk@example.test");
-  await signupB.getByLabel("Password", { exact: true }).fill("other-walk-strong-password");
+  await signupB.getByLabel("Your email", { exact: true }).fill("other-walk@example.test");
+  await signupB.getByLabel("Choose a password", { exact: true }).fill("other-walk-strong-password");
   await signupB.getByRole("button", { name: "Create account" }).click();
   await b.waitForURL("**/membership");
   await verify(async () =>

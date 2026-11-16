@@ -50,11 +50,11 @@ export default function Signin() {
               <input name="name" required maxLength={120} autoComplete="name" />
             </label>
             <label>
-              Email
+              Your email
               <input required type="email" name="email" autoComplete="email" />
             </label>
             <label>
-              Password
+              Choose a password
               <input
                 required
                 minLength={12}

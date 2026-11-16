@@ -2,13 +2,41 @@
   "items": [
     {
       "id": "member-signup",
-      "label": "Create a member account.",
+      "label": "Create a member account and see your own membership page.",
       "steps": [
+        {
+          "enterAs": "visitor"
+        },
         {
           "goto": "/signin"
         },
         {
-          "expectHeading": "Come on in."
+          "fill": "Phone number",
+          "value": "9000000003"
+        },
+        {
+          "fill": "Your name",
+          "value": "Signup Member"
+        },
+        {
+          "fill": "Your email",
+          "value": "signup-member@example.test"
+        },
+        {
+          "fill": "Choose a password",
+          "value": "Signup-member-passphrase-23"
+        },
+        {
+          "click": "Create account"
+        },
+        {
+          "expectHeading": "My membership"
+        },
+        {
+          "expectHeading": "Signup Member"
+        },
+        {
+          "expectText": "No membership yet."
         }
       ]
     }

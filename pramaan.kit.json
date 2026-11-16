@@ -1,6 +1,6 @@
 {
   "id": "memberships",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "title": "Memberships",
   "summary": "Sell memberships and day passes, confirm billing, and check members into a gym, studio, club or community.",
   "category": "business-operations",
@@ -105,7 +105,7 @@
     {
       "id": "member-signup",
       "role": "visitor",
-      "summary": "Create a member account.",
+      "summary": "Create a member account and see your own membership page.",
       "status": "ships-working",
       "checklist": "journeys/member-signup.json"
     },
@@ -134,7 +134,8 @@
       "id": "join-and-pay",
       "role": "member",
       "summary": "Join, follow the first-payment authorization link, and activate only after billing read-back; verified with the fake door.",
-      "status": "ships-working",
+      "status": "needs-capability",
+      "capability": "external_http",
       "checklist": "journeys/join-and-pay.json"
     },
     {

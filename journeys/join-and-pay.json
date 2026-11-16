@@ -2,13 +2,41 @@
   "items": [
     {
       "id": "join-and-pay",
-      "label": "Open recurring membership signup; the complete authorize/payment/read-back flow is verified by scripts/walk.mjs with the fake door.",
+      "label": "Join as a member and see your own membership page; the payment authorization and billing read-back are verified by scripts/walk.mjs with the fake door.",
       "steps": [
+        {
+          "enterAs": "member"
+        },
         {
           "goto": "/signin"
         },
         {
-          "expectHeading": "Come on in."
+          "fill": "Phone number",
+          "value": "9000000002"
+        },
+        {
+          "fill": "Your name",
+          "value": "Journey Member"
+        },
+        {
+          "fill": "Your email",
+          "value": "journey-member@example.test"
+        },
+        {
+          "fill": "Choose a password",
+          "value": "Journey-member-passphrase-23"
+        },
+        {
+          "click": "Create account"
+        },
+        {
+          "expectHeading": "My membership"
+        },
+        {
+          "expectHeading": "Journey Member"
+        },
+        {
+          "expectText": "No membership yet."
         }
       ]
     }

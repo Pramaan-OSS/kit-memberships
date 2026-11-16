@@ -14,4 +14,4 @@ Tests need migrated disposable TEST_DATABASE_URL. Run `pnpm test`; `node scripts
 
 MIT data starter from Pramaan-Dev/product-loop at the commit pinned in pramaan.kit.json, with account and HTTP helper copies from the portal reference kit. Uses MIT Pramaan-OSS/blocks patterns pinned in blocks.lock.json. Copyright (c) 2026 Sudo Sapient. See NOTICE.md and LICENSE.
 
-The kit carries no browser tools. To run `node scripts/walk.mjs`, install `@playwright/test` 1.64.1 outside the kit and set `WALK_BROWSER_MODULE` to its `index.js`.
+The kit carries no browser tools. To run `node scripts/walk.mjs`, install `@playwright/test` 1.64.1 outside the kit and set `WALK_BROWSER_MODULE` to its `index.mjs`.

@@ -45,10 +45,9 @@ Store roles in `app_users.role`. Only the owner can grant privileged roles on th
 ## Journeys that ship working
 
 - `public-plans`: browse plans without a session.
-- `member-signup`: open the signup and sign-in screen; the headless walk additionally creates and signs in a member.
+- `member-signup`: a visitor signs up in their own browser and sees their own membership page.
 - `owner-settings`: owner pass and owner credentials.
 - `front-desk`: owner/staff lookup screen; the headless walk additionally checks an active member in and refuses access after period end.
-- `join-and-pay`: signup, saved-plan authorization link and billing read-back, proven by the fake-door browser flow.
 - `edit-lists`: owner editable seeded statuses and plan categories. Values in use cannot be deleted; billing's required states can be renamed but not removed.
 
-Recurring join is ships-working with the fake door: the server creates a saved billing plan, sends the authorize form of billing.subscription.create with the member's contact details, saves its authorization link, and activates only when billing.subscription.get confirms active. No browser result grants access. Real-account compatibility is recorded in GAPS.md and no live calls are made. Pause/cancel and email modules remain needs-capability when off. Full kit CI: runs in product-loop on pinning; leave the local red record unchanged.
+`join-and-pay` waits for payments to be switched on (needs-capability); its checklist keeps the sign-up steps so it runs once they are. The headless walk proves recurring join with the fake door: the server creates a saved billing plan, sends the authorize form of billing.subscription.create with the member's contact details, saves its authorization link, and activates only when billing.subscription.get confirms active. No browser result grants access. Real-account compatibility is recorded in GAPS.md and no live calls are made. Pause/cancel and email modules remain needs-capability when off. Full kit CI: runs in product-loop on pinning; leave the local red record unchanged.
