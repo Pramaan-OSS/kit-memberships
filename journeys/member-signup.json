@@ -5,7 +5,7 @@
       "label": "Create a member account and see your own membership page.",
       "steps": [
         {
-          "enterAs": "visitor"
+          "enterAs": "member"
         },
         {
           "goto": "/signin"
