@@ -114,7 +114,7 @@ try {
       ).status(),
     ).toBe(401),
   );
-  await o.getByLabel("Owner email").fill("owner-walk@example.test");
+  await o.getByLabel("Owner email").fill("delivered+memberships-owner-walk@resend.dev");
   await o.getByLabel("Password", { exact: true }).fill("owner-walk-strong-password");
   await o.getByRole("button", { name: /Save sign-in|Change sign-in/ }).click();
   await verify(() => expect(o.getByText("Saved. You can now sign in")).toBeVisible());
@@ -167,7 +167,7 @@ try {
     console.log(`journey:${journey.id}: passed`);
   }
   await o.goto(origin + "/settings");
-  await o.getByLabel("Staff email").fill("desk-walk@example.test");
+  await o.getByLabel("Staff email").fill("delivered+memberships-desk-walk@resend.dev");
   await o.getByLabel("Temporary password").fill("front-desk-strong-password");
   await o.getByRole("button", { name: "Add staff", exact: true }).click();
   await verify(() => expect(o.getByText("Front-desk account added.")).toBeVisible());
@@ -175,7 +175,9 @@ try {
   const signin = s
     .locator("section")
     .filter({ has: s.getByRole("heading", { name: "Sign in", exact: true }) });
-  await signin.getByLabel("Email", { exact: true }).fill("desk-walk@example.test");
+  await signin
+    .getByLabel("Email", { exact: true })
+    .fill("delivered+memberships-desk-walk@resend.dev");
   await signin.getByLabel("Password", { exact: true }).fill("front-desk-strong-password");
   await signin.getByRole("button", { name: "Sign in", exact: true }).click();
   await s.waitForURL("**/membership");
@@ -185,7 +187,9 @@ try {
     .filter({ has: m.getByRole("heading", { name: "Become a member" }) });
   await signup.getByLabel("Phone number").fill("9000000000");
   await signup.getByLabel("Your name").fill("member-walk");
-  await signup.getByLabel("Your email", { exact: true }).fill("member-walk@example.test");
+  await signup
+    .getByLabel("Your email", { exact: true })
+    .fill("delivered+memberships-member-walk@resend.dev");
   await signup.getByLabel("Choose a password", { exact: true }).fill("member-walk-strong-password");
   await signup.getByRole("button", { name: "Create account" }).click();
   await m.waitForURL("**/membership");
@@ -224,7 +228,9 @@ try {
     .filter({ has: b.getByRole("heading", { name: "Become a member" }) });
   await signupB.getByLabel("Phone number").fill("9000000001");
   await signupB.getByLabel("Your name").fill("other-walk");
-  await signupB.getByLabel("Your email", { exact: true }).fill("other-walk@example.test");
+  await signupB
+    .getByLabel("Your email", { exact: true })
+    .fill("delivered+memberships-other-walk@resend.dev");
   await signupB.getByLabel("Choose a password", { exact: true }).fill("other-walk-strong-password");
   await signupB.getByRole("button", { name: "Create account" }).click();
   await b.waitForURL("**/membership");
@@ -276,7 +282,7 @@ try {
   await verify(() => expect(o.getByLabel("Current", { exact: true })).toBeVisible());
   await o
     .getByLabel("CSV: name,email")
-    .fill("name,email\nImported Walker,imported-walk@example.test");
+    .fill("name,email\nImported Walker,delivered+memberships-imported-walk@resend.dev");
   await o.getByRole("button", { name: "Import members" }).click();
   await verify(() => expect(o.getByText("Members imported.")).toBeVisible());
   await verify(async () =>

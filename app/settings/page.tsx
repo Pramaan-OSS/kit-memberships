@@ -158,7 +158,7 @@ export default function Settings() {
             >
               <label>
                 CSV: name,email
-                <textarea name="csv" required placeholder={"name,email\nAlex,alex@example.com"} />
+                <textarea name="csv" required placeholder={"name,email\nAlex,alex@yourclub.org"} />
               </label>
             </Form>
             <div className="links">
